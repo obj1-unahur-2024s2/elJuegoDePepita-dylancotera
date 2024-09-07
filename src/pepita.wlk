@@ -5,6 +5,7 @@ object pepita {
 
 	var property energia = 100
 	var property position = game.origin()
+	var property seguidor = silvestre
 
 	method image() {
 		return if (self.estaEnElNido()) "pepita-grande.png" else "pepita.png"
@@ -21,6 +22,7 @@ object pepita {
 	method irA(nuevaPosicion) {
 		self.vola(position.distance(nuevaPosicion))
 		position = nuevaPosicion
+		seguidor.positon(game.at( position.x() , seguidor.position().y()))
 	}
 
 	method estaCansada() {
@@ -32,5 +34,6 @@ object pepita {
 		return false // Reemplazar por el código correcto
 	}
 
+	
 }
 
