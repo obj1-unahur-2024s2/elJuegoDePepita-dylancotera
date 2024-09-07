@@ -3,12 +3,14 @@ import wollok.game.*
 
 object nido {
 
-	// Completar
+	method image() = "nido.png"
+	method position() = game.at(5, 5)
 }
 
 object silvestre {
 
-	// Completar
+	method image() = "silvestre.png"
+	method position() = game.origin()
 
 }
 
