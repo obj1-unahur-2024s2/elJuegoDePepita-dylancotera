@@ -5,12 +5,19 @@ object pepita {
 
 	var property energia = 100
 	var property position = game.origin()
-	var property seguidor = silvestre
+
 
 	method image() {
-		return if (self.estaEnElNido()) "pepita-grande.png" else "pepita.png"
+	//	"pepita" + self.parteDelNombreDelArchivoSegunUbicacion() + self.parteDelNombreDelArchivoSegunCansancio() + ".png"
+		
+		return if (self.estaEnElNido()) "pepita-grande.png" else "pepita.png" 
 	}
 
+	method position(arg){
+		self.irA(arg)
+//		game.say(pepita,"cambio posicion: " + position.x() + " - " + position.y())
+		game.say(self,"energia actual: " + energia)
+}
 	method come(comida) {
 		energia = energia + comida.energiaQueOtorga()
 	}
@@ -20,9 +27,12 @@ object pepita {
 	}
 
 	method irA(nuevaPosicion) {
+		// if pepita sin energia aca
+		
 		self.vola(position.distance(nuevaPosicion))
 		position = nuevaPosicion
-		seguidor.positon(game.at( position.x() , seguidor.position().y()))
+		
+
 	}
 
 	method estaCansada() {
@@ -31,9 +41,14 @@ object pepita {
 
 	method estaEnElNido() {
 		
-		return false // Reemplazar por el código correcto
+		return position == nido.position()
 	}
 
+//  	method parteDelNombreDelArchivoSegunCansancio() = 
+//		if (self.estaCansada()) "-gris" else ""
+//
+//	method parteDelNombreDelArchivoSegunUbicacion() = 
+//	    if (self.estaEnElNido()) "-grande" else ""
 	
 }
 
